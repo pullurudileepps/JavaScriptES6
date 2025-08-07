@@ -1,1 +1,1 @@
-# academy-october-17
+HTML, CSS, JAVASCRIPT CONCEPTS
