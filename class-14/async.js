@@ -1,8 +1,8 @@
 const value1 = new Promise((resolve, reject) => {
-  reject("Scaler Academy");
+  reject("Tutorial");
 });
 
-const value2 = "Scaler Academy";
+const value2 = "Tutorial";
 
 async function fetchValue() {
   return value1;

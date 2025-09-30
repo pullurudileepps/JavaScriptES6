@@ -1,6 +1,6 @@
 function value1() {
   return new Promise((resolve) => {
-    setTimeout(resolve, 2000, "Scaler Academy");
+    setTimeout(resolve, 2000, "Tutorial");
   });
 }
 

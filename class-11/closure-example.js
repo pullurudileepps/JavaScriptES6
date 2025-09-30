@@ -1,7 +1,7 @@
 // Create a one(). A function that will call the passed function "atmost" one time.
 
 function printName() {
-  return "Scaler Academy";
+  return "Tutorial";
 }
 
 function one(fn) {
@@ -17,7 +17,7 @@ function one(fn) {
 }
 
 const returnedFn = one(printName);
-console.log(returnedFn()); // "Scaler Academy"
+console.log(returnedFn()); // "Tutorial"
 console.log(returnedFn()); // "Already invoked once"
 console.log(returnedFn()); // "Already invoked once"
 console.log(returnedFn()); // "Already invoked once"

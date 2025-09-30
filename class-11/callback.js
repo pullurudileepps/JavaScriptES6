@@ -23,7 +23,7 @@ function printDetails(scaler, academy) {
 
 function printName(cb) {
   // HOF
-  console.log("Scaler Academy");
+  console.log("Tutorial");
   cb();
 }
 

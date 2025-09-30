@@ -10,7 +10,7 @@ numOne = 100;
 // -----------------------------
 
 let obj1 = {
-  name: "Scaler Academy",
+  name: "Tutorial",
   age: 6,
 };
 
