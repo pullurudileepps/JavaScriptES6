@@ -1,0 +1,63 @@
+Revision Notes: Event Propagation in JavaScript
+Introduction
+In this class, we focused on understanding the concept of event propagation in the Document Object Model (DOM), which is crucial for handling events in web development. We'll cover the key concepts and illustrate them with examples based on the class notes and discussions.
+
+Event Propagation
+Event propagation refers to the sequence that occurs when an event takes place on a DOM element. There are two primary phases involved in event propagation:
+
+Capturing Phase: The event travels from the root of the DOM tree down to the target element.
+Bubbling Phase: After reaching the target element, the event travels back up to the root .
+These phases allow developers to have fine-grained control over how and when events are handled in their applications .
+
+Event Propagation Cycle
+The event propagation cycle consists of three stages:
+
+Capturing Phase:
+
+Starts from the top of the DOM tree.
+Travels down through ancestor elements to the target element.
+Suitable for intercepting events early in the cycle .
+Target Phase:
+
+The event has reached the target.
+Event handlers on the target element are invoked .
+Bubbling Phase:
+
+The event propagates back up through ancestor elements to the root.
+This phase is the default for most event handlers .
+Example of Event Propagation
+Consider the nested HTML structure:
+
+<div id="grandparent">
+  <div id="parent">
+    <div id="child"></div>
+  </div>
+</div>
+Attaching event listeners to each div can demonstrate both capturing and bubbling. By default, events use bubbling unless specified otherwise by setting an optional parameter in the addEventListener() method .
+
+// Bubbling event example
+grandparent.addEventListener('click', function() {
+  console.log('Grandparent clicked');
+});
+parent.addEventListener('click', function() {
+  console.log('Parent clicked');
+});
+child.addEventListener('click', function() {
+  console.log('Child clicked');
+});
+
+// Capturing event example
+grandparent.addEventListener('click', function() {
+  console.log('Grandparent clicked (capturing)');
+}, true);
+In capturing, "Grandparent clicked (capturing)" would be logged first, while in bubbling, it logs "Child clicked", "Parent clicked", then "Grandparent clicked" .
+
+Practical Application
+Use Case: Star Rating Component
+A practical application of event bubbling is in creating a star rating component. By attaching a single event listener to the container of star elements, it reduces complexity and enhances performance, particularly when dealing with multiple interactive components .
+
+Use Case: Counter Component
+Another example is the counter component that demonstrates increment, decrement, and reset functionalities. Event listeners are attached to buttons, handling user interactions efficiently .
+
+Stopping Event Propagation
+Event propagation can be manually stopped using event.stopPropagation(), which prevents further propagation of the current event in the capturing and bubbling phases . This is particularly useful when you want to limit the scope of an event's effects.

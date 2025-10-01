@@ -1,0 +1,80 @@
+Revision Notes on JavaScript call, apply, and bind
+In this lecture, we focused on understanding the purpose and functionality of call, apply, and bind methods in JavaScript. The session covered how these methods are used to control the value of this in a function, and explored their differences through examples and analogies.
+
+Understanding this in JavaScript
+In JavaScript, this is a context-dependent reference that points to different objects based on how and where it is invoked. This concept is crucial for understanding call, apply, and bind.
+
+Example of this Usage
+If this is used in an object method, it typically refers to the object calling the method.
+If used alone, this refers to the global object.
+The call Method
+Purpose
+The call method allows you to invoke a function with a given this context and arguments provided individually.
+
+Syntax
+functionName.call(thisValue, arg1, arg2, ...)
+How It Works
+Function Invocation: It immediately invokes the function with the provided context and arguments.
+Context Setting: The first parameter of the call method sets the this context within the function.
+Example
+const person1 = {
+    name: 'Mrinal',
+    age: 25,
+    printDetails: function(location) {
+        console.log(`My name is ${this.name}, I am ${this.age} years old, and I live in ${location}.`);
+    }
+};
+
+const person2 = {
+    name: 'Mark',
+    age: 30
+};
+
+person1.printDetails.call(person2, 'San Francisco'); // Output: My name is Mark, I am 30 years old, and I live in San Francisco.
+Key Point
+The call method is useful for borrowing methods from one object to another without duplication【7:13†transcript.txt】.
+
+The apply Method
+Purpose
+The apply method is similar to call, but it takes the arguments as an array.
+
+Syntax
+functionName.apply(thisValue, [argsArray])
+How It Works
+Function Invocation: Invokes the function immediately like call.
+Arguments: Accepts arguments in the form of an array.
+Example
+const numbers = [5, 6, 2, 3, 7];
+const max = Math.max.apply(null, numbers); // Output: 7
+Key Point
+apply is particularly useful when dealing with an array of parameters, leveraging its ability to handle array-like objects【7:11†transcript.txt】.
+
+The bind Method
+Purpose
+bind creates a new function, when invoked, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
+
+Syntax
+const boundFunction = functionName.bind(thisValue, arg1, arg2, ...)
+How It Works
+Function Creation: Does not execute the function immediately. Instead, it returns a new function.
+Context Setting: Similar to call, binds the function to a specific context.
+Closure Formation: The returned function maintains a closure over the specified this and arguments.
+Example
+const module = {
+    x: 42,
+    getX: function() {
+        return this.x;
+    }
+};
+
+const unboundGetX = module.getX;
+console.log(unboundGetX()); // Output: undefined
+
+const boundGetX = unboundGetX.bind(module);
+console.log(boundGetX()); // Output: 42
+Key Point
+bind is useful for ensuring functions execute in the intended context, particularly in callbacks【7:18†transcript.txt】.
+
+Key Differences
+call and apply invoke the function immediately, whereas bind returns a function to be invoked later.
+call takes arguments individually, while apply takes arguments as an array.

@@ -1,0 +1,32 @@
+Revision Notes: Building a Weather App using JSON and APIs
+Introduction
+In this session, we focused on learning how to create a weather web application using JSON and APIs. The primary technologies we used include HTML, CSS, and JavaScript, along with JSON data structures and the Weather API.
+
+Concepts Covered:
+JSON (JavaScript Object Notation):
+
+JSON is a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate. It is language-independent and is closely related to JavaScript.
+JSON mainly consists of two structures: objects (key/value pairs) and arrays (ordered lists of values)【8:0†typed.md】.
+An analogy to understand JSON involves imagining your data as toys. When you need to share these toys with a friend far away (the server), you pack them into a special format (JSON string) for easy transport【8:1†transcript.txt】.
+APIs (Application Programming Interfaces):
+
+APIs allow different software applications to communicate by exchanging data and functionality. They essentially act as intermediaries【8:5†transcript.txt】.
+In our application, we used a weather API to retrieve weather data for various cities. We issue requests to the API server, which responds with data formatted in JSON【8:12†typed.md】.
+Building the Weather App:
+
+Files created: index.html, style.css, index.js.
+The HTML file contained structure for displaying temperature, location, time, and other weather-related information. We used placeholders initially【8:9†transcript.txt】.
+CSS was pre-written to save time, focusing this session on JavaScript and API interactions【8:2†typed.md】.
+The JavaScript used:
+fetch() to make HTTP requests to the Weather API to fetch data【8:14†transcript.txt】【8:18†transcript.txt】.
+Functions like JSON.stringify() and JSON.parse() were discussed to convert data to and from JSON strings【8:7†typed.md】【8:10†transcript.txt】.
+Event listeners update the UI dynamically once weather data is fetched【8:16†typed.md】.
+Practical Implementation:
+
+Upon fetching the weather data, JSON responses were parsed into JavaScript objects for easy manipulation【8:16†typed.md】.
+DOM manipulation was employed to display current weather details on the web page. The data includes temperature, location name, local time, and weather conditions【8:17†transcript.txt】.
+Error handling was implemented to manage invalid city inputs gracefully【8:14†transcript.txt】.
+Utilizing Weather API:
+
+We signed up at WeatherAPI.com for access. The API requires authentication using a unique API key【8:12†typed.md】.
+The API explorer feature allowed for testing different endpoints and queries, within the constraints set by the API terms【8:12†typed.md】【8:13†transcript.txt】.

@@ -1,0 +1,58 @@
+Revision Notes: Promise Combinators in JavaScript
+In this class, we covered the concept of promise combinators in JavaScript, which are methods designed to handle multiple promises simultaneously. This allows developers to manage complex asynchronous operations more efficiently. Below is a detailed explanation of each of the promise combinators discussed during the class:
+
+Promise Combinators Overview
+Promise combinators are methods defined in JavaScript to manage multiple promises. They return a promise that settles depending on the behavior of the input promises. The four main promise combinators covered were:
+
+Promise.all
+Promise.allSettled
+Promise.race
+Promise.any
+1. Promise.all
+Use: Executes multiple asynchronous tasks in parallel and returns a single promise.
+Behavior: The returned promise resolves only when all the input promises resolve, yielding an array of their results. It rejects upon the first input promise rejection【4:15†source】【17:handwritten.pdf】.
+Example: Fetching user data and user posts concurrently, continuing once both tasks are complete.
+Promise.all([fetchUserData(), fetchUserPosts()])
+    .then(results => {
+        console.log("User Data:", results[0]);
+        console.log("User Posts:", results[1]);
+    })
+    .catch(error => {
+        console.error("An error occurred:", error);
+    });
+2. Promise.allSettled
+Use: Waits for all promises to settle (either resolved or rejected) and returns a promise.
+Behavior: The returned promise resolves with an array of objects describing the outcome of each promise, providing a status of 'fulfilled' or 'rejected'【4:10†source】【17:handwritten.pdf】.
+Promise.allSettled([fetchUserData(), fetchUserPosts()])
+    .then(results => {
+        results.forEach((result, index) => {
+            if (result.status === 'fulfilled') {
+                console.log(`Promise ${index + 1} resolved with value:`, result.value);
+            } else {
+                console.error(`Promise ${index + 1} rejected with reason:`, result.reason);
+            }
+        });
+    });
+3. Promise.race
+Use: Initiates multiple promises and returns the result of the first one to settle—be it resolved or rejected.
+Behavior: The first promise to settle dictates the outcome of the returned promise【4:14†source】【17:handwritten.pdf】.
+Promise.race([quickResolve(), slowResolveOrFastReject()])
+    .then(result => {
+        console.log("Result:", result);
+    })
+    .catch(error => {
+        console.error("Error:", error.message);
+    });
+4. Promise.any
+Use: Resolves with the first promise that fulfills (not waiting for all to complete), provided at least one fulfills.
+Behavior: If every input promise is rejected, it returns an AggregateError 【4:18†source】【17:handwritten.pdf】.
+Promise.any([fetchUserData(), fetchUserPosts()])
+    .then(result => {
+        console.log("First resolved promise:", result);
+    })
+    .catch(error => {
+        console.error("All promises were rejected:", error);
+    });
+Additional Notes
+Polyfills: During the class, polyfills for these methods like Promise.myAll and Promise.myAny were discussed to illustrate custom implementations of promise combinators .
+Practical Application: These promise combinators are essential in scenarios like API data fetching, performing concurrent initialization tasks, or synchronizing complex asynchronous operations.

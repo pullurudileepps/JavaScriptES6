@@ -1,0 +1,59 @@
+Comprehensive Revision Notes on Local Storage
+Introduction to Web Storage
+In this class, we focused on understanding and implementing web storage, primarily local storage, and touched briefly on session storage. These concepts are crucial for data persistence in web applications【4:0†transcript.txt】.
+
+Why Local Storage is Important
+Local storage allows data persistence across multiple reloads and browser restarts. It is particularly advantageous because:
+
+It stores data with no expiration date.
+The data remains persisted even after the browser tab or window is closed【4:14†transcript.txt】【4:11†transcript.txt】.
+Web Storage Types
+Local Storage:
+
+Data persists until explicitly deleted.
+Useful for storing long-term data【4:14†transcript.txt】.
+Session Storage:
+
+Data lasts only until the browser tab is closed.
+Used for temporary data persistence within a session【4:14†transcript.txt】.
+Technical Implementation of Local Storage
+Fundamentals of Local Storage
+Structure: Local storage is a simple key-value store where both keys and values are strings【4:10†typed.md】【4:18†transcript.txt】.
+APIs Used:
+localStorage.setItem(key, value): Stores data.
+localStorage.getItem(key): Retrieves data.
+localStorage.removeItem(key): Removes specific data.
+localStorage.clear(): Clears all stored data【4:12†typed.md】.
+Use Case: Project Implementation
+The class demonstrated implementing local storage in a Kanban board project:
+
+Creating a Ticket:
+
+Use setItem to store tickets as JSON strings【4:10†typed.md】.
+Accessing Stored Tickets:
+
+On page load, parse the JSON string to retrieve tickets【4:13†typed.md】.
+Updating and Deleting Tickets:
+
+Update involves changing values and re-saving them using setItem.
+Delete by calling removeItem with the specific key【4:13†typed.md】【4:3†transcript.txt】.
+Functionality Breakdown
+Setting Items:
+
+Serialization via JSON.stringify() is essential for storing complex data like arrays or objects【4:12†typed.md】.
+Getting Items:
+
+Implemented using JSON.parse() to convert strings back to usable objects【4:12†typed.md】.
+Removing Items:
+
+Specific removal with removeItem(key), clearing all with clear()【4:12†typed.md】.
+Limitations and Security Considerations
+Storage Limit: Approximately 5-10 MB per domain【4:18†transcript.txt】.
+Synchronous Nature: Operations can block the main thread, potentially affecting performance【4:18†transcript.txt】.
+Security Risks: Vulnerable to XSS attacks as data is accessible via JavaScript【4:18†transcript.txt】.
+Data Persistence: No automatic expiration, thus requiring manual management【4:18†transcript.txt】.
+Class Project: Kanban Board with Local Storage
+The Kanban board project was enhanced with local storage:
+
+Integration ensured that data such as tasks and states were retained across browser sessions【4:6†transcript.txt】.
+The project was deployed through GitHub Pages, enabling accessible hosting【4:8†transcript.txt】.

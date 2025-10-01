@@ -1,0 +1,99 @@
+Revision Notes: JavaScript OOP Concepts
+Constructor Functions
+What are Constructor Functions?
+Constructor functions in JavaScript are used to create multiple objects with the same structure, methods, and properties, acting as a blueprint for creating instances of a particular object type【7:14†source】 .
+
+Real-life Analogy
+Imagine a restaurant serving various pizzas, each with different toppings, sizes, and crust types. Instead of crafting each pizza from scratch, a recipe or blueprint (the constructor function) outlines the necessary steps and ingredients .
+Code Example
+function Pizza(toppings, size, crustType) {
+    this.toppings = toppings;
+    this.size = size;
+    this.crustType = crustType;
+
+    this.describe = function() {
+        console.log(`A ${this.size} pizza with ${this.toppings.join(", ")} on a ${this.crustType} crust.`);
+    };
+}
+
+var customerOrder1 = new Pizza(['cheese', 'pepperoni'], 'medium', 'thin');
+var customerOrder2 = new Pizza(['veggies', 'pepperoni'], 'small', 'thick');
+
+customerOrder1.describe();
+customerOrder2.describe();
+The Pizza constructor function acts as a template to create a new pizza object with specified properties .
+Classes
+Introduction to Classes
+Classes provide a new syntax for creating objects and handling inheritance, making the code more readable and concise compared to constructor functions .
+Creating a Simple Class
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+Classes are introduced in ES6 for more straightforward object-oriented programming .
+Class Inheritance
+What is Inheritance?
+Inheritance allows a class to inherit properties and methods from another class, promoting code reuse .
+
+Implementing Inheritance
+class StuffedCrustPizza extends Pizza {
+  constructor(toppings, size, crustType, stuffingType) {
+    super(toppings, size, crustType);
+    this.stuffingType = stuffingType;
+  }
+
+  describeStuffing() {
+    console.log(`This pizza has ${this.stuffingType} stuffing in the crust.`);
+  }
+}
+extends and super keywords enable inheritance and allow calling the parent class's constructor .
+Static Methods and Private Properties
+Static Methods
+Static methods belong to the class itself rather than any instance of the class and are accessed using the class name .
+Consider them as methods intended for functionality that doesn't change from instance to instance .
+Private Properties
+Private properties are encapsulated within the class, ensuring the inner state isn't directly accessed from outside, enhancing security and integrity .
+Syntax for making properties private involves prefixing their names with # .
+Modified Example with Private Properties
+class Pizza {
+  static totalPizzasMade = 0;
+  #toppings;
+  #size;
+  #crustType;
+
+  constructor(toppings, size, crustType) {
+    this.#toppings = toppings;
+    this.#size = size;
+    this.#crustType = crustType;
+    Pizza.totalPizzasMade++;
+  }
+
+  describe() {
+    console.log(`A ${this.#size} pizza with ${this.#toppings.join(", ")} on a ${this.#crustType} crust.`);
+  }
+
+  static calculateTotalPizzasMade() {
+    console.log(`Total pizzas made: ${Pizza.totalPizzasMade}`);
+  }
+}
+
+class StuffedCrustPizza extends Pizza {
+  #stuffingType;
+
+  constructor(toppings, size, crustType, stuffingType) {
+    super(toppings, size, crustType);
+    this.#stuffingType = stuffingType;
+  }
+
+  describeStuffing() {
+    console.log(`This pizza has ${this.#stuffingType} stuffing in the crust.`);
+  }
+
+  describe() {
+    super.describe();
+    this.describeStuffing();
+  }
+}
+This illustrates using private properties and static methods to manage object states and shared class functionalities .

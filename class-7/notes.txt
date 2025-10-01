@@ -1,0 +1,52 @@
+Async/Await in JavaScript
+In this class, we focused on the concept of Async/Await in JavaScript, which is a modern syntax feature that simplifies writing asynchronous code, making it more readable and easier to debug. Here are the detailed notes from the class structured for revision purposes:
+
+Introduction to Async/Await
+What is Async/Await?
+Async/Await was introduced in ES2017 as a syntax that builds upon JavaScript Promises and provides a cleaner way to work with asynchronous operations【4:0†transcript.txt】.
+It allows developers to write asynchronous code that looks synchronous, improving code readability【4:10†typed.md】.
+Why Use Async/Await?
+Asynchronous operations are critical for non-blocking code execution in JavaScript, especially for tasks like data fetching and file reading【4:10†typed.md】.
+Although Promises greatly improved the situation compared to callbacks, Async/Await further simplifies it by eliminating the .then and .catch chains【4:16†transcript.txt】.
+Basics of Async Functions
+Declaring an Async Function
+An async function always returns a Promise, wrapping non-Promise return values automatically【4:10†typed.md】.
+Example:
+async function fetchData() {
+  return 'data';
+}
+
+const dataPromise = fetchData();
+console.log(dataPromise); // Logs: Promise { 'data' }
+Await Keyword
+The await keyword pauses the execution of the async function, allowing asynchronous promises to resolve.
+It can only be used inside async functions and lets the JavaScript engine wait for a promise to resolve and return its result【4:4†transcript.txt】.
+Error Handling with Async/Await
+Try/Catch Blocks
+Error handling within Async/Await functions can be done using try/catch blocks.
+If a promise is rejected, catch is used to handle the error【4:16†transcript.txt】.
+Example
+async function handleAsyncOperation() {
+  try {
+    let data = await fetchData();
+    console.log(data);
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
+Practical Examples
+Example of Serial Execution with Async/Await
+Consider this function where two promises resolve at different times:
+const p1 = new Promise(resolve => setTimeout(() => resolve('Resolved 1'), 10000));
+const p2 = new Promise(resolve => setTimeout(() => resolve('Resolved 2'), 5000));
+
+async function handlePromises() {
+  console.log("Starting");
+  const result1 = await p1;
+  console.log(result1); // Waits for p1 to resolve
+  const result2 = await p2;
+  console.log(result2); // Waits for p2 to resolve
+}
+
+handlePromises();
+The total execution will take 15 seconds because both promises need to resolve sequentially【4:19†typed.md】.

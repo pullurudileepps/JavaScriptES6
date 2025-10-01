@@ -1,0 +1,33 @@
+Comprehensive Class Notes on Kanban Board Project
+Overview
+In this session, we covered the foundational part of developing a web-based Kanban board application using HTML, CSS, and Javascript. The session focused primarily on the structuring and styling aspects of the user interface, targeting key features of task management applications, such as task addition, editing, and deletion.
+
+Key Concepts Covered
+Kanban Board Basics
+Definition: A Kanban Board is a visual tool that is commonly used in project management to organize tasks, allowing users to manage workloads and prioritize tasks effectively .
+Functionality: The board allows for categorizing tasks visually based on their status and priority.
+Project Structure
+Toolbox Design:
+
+The toolbox acts as the application's navigation bar with buttons for task management.
+Priority Colors: Includes four color-coded priority indicators (light pink, light green, light blue, black) which filter tasks by priority .
+Action Buttons: Contains buttons for adding and removing tasks .
+Task Tickets:
+
+Each task is presented as a "ticket" with a priority color, unique task ID, description, and a lock icon for editing .
+HTML & CSS Structure:
+HTML has a specific structure with elements for color coding, task identification, and task editing .
+CSS styles define the visual layout of the tickets, including colors and positioning .
+Modal Popup Design: Used for adding/editing tasks. The structure involves a text area for task input with a sidebar for priority selection .
+
+Styling and Layout
+Flexbox Layout: Used extensively for layout management — ensuring a responsive and scalable design for different screen sizes .
+CSS Properties: Managed visual hierarchy and styling aspects like position, background-color, display attributes (flex, absolute), and custom styling for different state elements such as hover effects .
+Interactive Elements
+Task Filtering: Tasks can be filtered based on their priority status by interacting with the toolbox color buttons .
+Editable and Locking Mechanism: Tasks have a toggle-able lock allowing the user to enable/disable editing mode .
+Future Directions
+The class provided a foundation in UI design and layout for our Kanban board. Next steps include incorporating JavaScript for functionality such as:
+
+Dynamic Task Addition and Deletion: Using event listeners and DOM manipulation to add or remove tasks based on user inputs .
+Data Persistence: Implementing local storage to maintain task states across sessions .

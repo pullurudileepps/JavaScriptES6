@@ -1,0 +1,64 @@
+Revision Notes: Events and Event Handling in JavaScript
+Introduction to Events
+Events in JavaScript are actions or occurrences that happen in the system you are programming. These events can be anything from user interactions like clicking, hovering, or typing to system-generated events such as a page loading or an internet connection change【4:10†source】. Understanding how to handle these events is crucial for building interactive applications.
+
+Types of Events
+Click Events: Triggered when a user clicks on an element.
+Keyboard Events: Such as keydown, keypress, and keyup, which are invoked when the user presses keys【4:2†source】【4:10†source】.
+Mouse Events: These include hover, drag, and drop events, which occur with mouse actions.
+Event Handling
+Event handling is the process of managing user and system-generated events through specified functions called event handlers or callbacks.
+
+Event Listeners
+Event listeners are functions that listen for specific events on elements. They are attached to DOM elements and react to user inputs or system actions【4:6†source】.
+
+document.querySelector("#myButton").addEventListener("click", function(e) {
+    alert("Button was clicked!");
+});
+Key Event Listeners
+For handling keyboard events, keydown event is commonly used, which is triggered when a key is pressed down【4:2†source】.
+
+document.addEventListener("keydown", function(event) {
+    console.log("Key pressed:", event.key);
+});
+DOM Manipulation with Events
+Creating and Destroying Elements
+Creating dynamic applications often involves creating new elements or removing existing ones. This is a common feature in modern web applications.
+
+Example Problem: Double-and-Create Buttons
+Create a feature where clicking a button removes it and creates two new buttons【4:19†source】.
+
+document.querySelector("#doubleHolder").addEventListener("click", function(e) {
+    if (e.target.classList.contains("double")) {
+        let btn1 = document.createElement("button");
+        btn1.className = "first-button";
+        btn1.innerHTML = "first button";
+
+        let btn2 = document.createElement("button");
+        btn2.className = "second-button";
+        btn2.innerHTML = "second button";
+
+        e.currentTarget.appendChild(btn1);
+        e.currentTarget.appendChild(btn2);
+        e.currentTarget.removeChild(e.target);
+    }
+});
+In this example, we listen for a click on a container element. When the button with the class double is clicked, it is removed, and two new buttons are added in its place.
+
+Scroll Handling with Key Events
+Using keyboard events to navigate through sections can enhance user interactivity【4:2†source】.
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "T") {
+        window.scrollTo(0, 0);  // Scroll to the top
+    }
+});
+Advanced Event Handling
+Beyond the basics, JavaScript allows manipulation of multiple elements and even complex structures using event properties and bubbling.
+
+Event Properties
+Event objects contain properties like target, which refers to the DOM element that triggered the event. This is useful for dynamic content changes and debugging【4:14†source】【4:15†source】.
+
+element.addEventListener("click", function(event) {
+    console.log(event.target);  // Logs the clicked element
+});

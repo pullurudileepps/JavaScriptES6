@@ -1,0 +1,40 @@
+Revision Notes: Asynchronous Programming with Promises
+Introduction to Promises
+What are Promises?
+A Promise in JavaScript is an object representing the eventual completion or failure of an asynchronous operation. It provides a mechanism to manage asynchronous code more cleanly, managing both the results or errors that occur once the operation completes. Promises can be in one of three states:
+
+Pending: The initial state, neither fulfilled nor rejected.
+Fulfilled: The operation completed successfully.
+Rejected: The operation failed【8:13†source】.
+Real-life Analogy: Much like a real-world promise, when a promise is created, it starts in a pending state awaiting completion or rejection【8:13†source】.
+
+Importance of Promises
+Promises help to avoid "callback hell" by providing a more clear structure to handle asynchronous tasks, which improves code readability and maintainability【8:13†source】.
+Asynchronous Programming with Promises
+Creating a Promise
+A promise is created using the Promise constructor, which requires an executor function. This executor function accepts two parameters: resolve and reject.
+
+let myPromise = new Promise((resolve, reject) => {
+  // Asynchronous operation
+  const success = true; // This would be a condition of your async result.
+
+  if (success) {
+    resolve("Operation succeeded");
+  } else {
+    reject("Operation failed");
+  }
+});
+resolve(value): Completes the promise and reports success.
+reject(error): Completes the promise and reports failure【8:13†source】.
+Handling Promises
+.then(callback): Attaches callbacks that will be executed when the promise is fulfilled.
+.catch(callback): Attaches handlers for eventual errors or rejections.
+Promise chaining: Allows a sequence of asynchronous tasks to be executed, each starting only after the previous task has completed【8:8†source】【8:9†source】.
+Serial and Concurrent Execution
+Concurrent Execution: Multiple promises can run simultaneously and independently. The order of completion is not guaranteed【8:12†source】.
+Serial Execution: Utilizing promise chaining to enforce a specific sequential order of operations【8:10†source】【8:11†source】.
+Advanced Concepts
+Event Loop and Microtasks
+Event Loop: Manages operations in JavaScript, allowing for non-blocking I/O operations. Promises utilize a microtask queue, which has higher priority over other events, ensuring that promise handlers (then/catch) are executed as soon as the microtask is ready【8:10†source】【8:14†source】.
+Error Handling in Promises
+Handling errors in promise chains can be done centrally using .catch(), ensuring that any error in the execution chain is caught and managed without breaking the execution flow【8:9†source】【8:10†source】.

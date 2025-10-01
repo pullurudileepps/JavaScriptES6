@@ -1,0 +1,62 @@
+# Revision Notes: Class on JavaScript Kanban Board
+
+## Agenda of the Class
+The class covered the following main topics:
+- Locking Mechanism
+- Changing the Priority Color of a Task
+- Filtering Tasks Using a Priority Color Filter
+- Showing All Tasks on Double Click
+
+### Locking Mechanism
+The locking mechanism is implemented to ensure tasks within a ticket can be edited or locked to prevent further changes. The implementation leverages the **Font Awesome** library to visualize a lock status with a lock icon. 
+
+**Code Implementation:**
+```javascript
+let lockClose = "fa-lock";
+let lockOpen = "fa-lock-open";
+
+function handleLock(ticket) {
+  let ticketLockElem = ticket.querySelector(".ticket-lock");
+  let ticketLockIcon = ticketLockElem.children[0];
+
+  ticketLockIcon.addEventListener("click", function () {
+    console.log("Lock Selected");
+    if (ticketLockIcon.classList.contains(lockClose)) {
+      ticketLockIcon.classList.remove(lockClose);
+      ticketLockIcon.classList.add(lockOpen);
+      ticketTaskArea.setAttribute("contenteditable", "true");
+    } else {
+      ticketLockIcon.classList.remove(lockOpen);
+      ticketLockIcon.classList.add(lockClose);
+      ticketTaskArea.setAttribute("contenteditable", "false");
+    }
+  });
+}
+This JavaScript code toggles the lock status visual representation of a ticket within a web application by switching icons depending on whether the task field should be editable【4:0†typed.md】.
+
+Changing the Priority Color of the Task
+Tasks can be assigned a priority color, and this feature allows the user to change the task color by interacting with a designated area on the UI.
+
+Functionality:
+
+When a user clicks on the color band of a ticket, the color changes through a predefined set of colors.
+This action utilizes classes to manage which color is currently being displayed【4:0†typed.md】.
+Filtering Tasks Using Priority Color Filter
+The filtering mechanism allows users to view tickets based on their priority color.
+
+Mechanism:
+
+Each color dip in the toolbox represents a filter for tasks of that color.
+The JavaScript loops through toolbox colors, sets an event listener on each, and upon clicking, it filters and displays only the tasks that match the selected color【4:2†typed.md】.
+Showing All Tasks on Double Click
+Users can view all tasks regardless of their color filter setting by double-clicking, which resets the filter and displays all tasks within the board【4:3†typed.md】.
+
+Ticket Creation Process
+Tickets are dynamically created with an ID, color, and textual content.
+
+Attributes for Ticket Creation:
+
+Task Details: User input defining the task at hand.
+Ticket Color: Assigned from a set of priority colors.
+Ticket ID: Unique identifier generated via shortid to prevent duplication.
+Using JavaScript, these properties are stored and tickets are rendered dynamically within the DOM【4:5†transcript.txt】.

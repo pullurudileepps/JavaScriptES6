@@ -1,0 +1,68 @@
+Detailed Revision Notes: Functional Programming in JavaScript
+Functional Programming with JavaScript Higher Order Functions
+Introduction to Higher Order Functions
+Higher Order Functions (HOFs) are functions that take other functions as arguments or return functions as their result. The most common HOFs in JavaScript include: map, filter, and reduce.
+
+Agenda for the Lesson
+Understanding Polyfills: Writing JavaScript code that provides modern functionality on older browsers which do not support those features natively.
+Creating Polyfills for HOFs: Implementing custom versions of map, filter, and reduce.
+Interview Problem Solving: Tackling commonly asked interview problems using HOFs.
+Polyfills for Map, Filter, and Reduce
+Map Function Polyfill
+Purpose: Creates a new array populated with the results of calling a provided function on every element in the calling array.
+Implementation Steps:
+Iterate over each element of the array with a for loop.
+Apply the given function to each element and store it in the new array.
+Return the new array containing the transformed elements【4:14†typed.md】.
+Filter Function Polyfill
+Purpose: Creates a new array with all elements that pass the test implemented by the provided function.
+Key Concepts:
+Initiate an empty results array.
+Iterate through each element, applying a test function. If true, add the element to the results.
+Return the results array.
+Code Example:
+if (!Array.prototype.myFilter) {
+  Array.prototype.myFilter = function(callback, thisArg) {
+    var result = [];
+    for (var i = 0; i < this.length; i++) {
+      if (i in this) {
+        if (callback.call(thisArg, this[i], i, this)) {
+          result.push(this[i]);
+        }
+      }
+    }
+    return result;
+  };
+}
+【4:14†typed.md】.
+Reduce Function Polyfill
+Purpose: Executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
+Implementation Steps:
+Initialize an accumulator to the initial value or the first element.
+Iterate through each element, updating the accumulator based on the reducer function.
+Return the accumulator which houses the final result【4:14†typed.md】.
+Task: Manipulate Transaction Data with Reduce
+Problem Statement
+Given an array of transactions, develop a JavaScript function using HOF to transform and summarize data regarding transactions:
+
+totalTransactions: Compute total number of transactions.
+totalAmount: Sum of all transaction amounts.
+averageTransactionAmount: Average transaction amount.
+transactionsPerDay: Group transactions by date.
+transactionsByCustomer: Group transactions by customer ID【4:3†transcript.txt】【4:10†typed.md】【4:14†typed.md】【4:16†transcript.txt】.
+Solution Steps
+Summarizing Transaction Data:
+
+Total Transactions:
+const totalTransactions = transactions.length;
+Total Amount:
+const totalAmount = transactions.reduce((total, transaction) => total + transaction.amount, 0);
+Average Transaction Amount:
+const averageTransactionAmount = totalAmount / totalTransactions;
+Transactions Per Day: Using reduce to group transactions by their date property【4:3†typed.txt】.
+Transactions By Customer: Similar to step 4, but grouped by the customerId【4:15†typed.md】.
+Problem Solving with Functional Techniques
+Flatten Nested Arrays: Transform a nested array into a single-dimensional array using recursive techniques and the spread operator within a reduce function【4:11†transcript.txt】.
+Key Takeaways
+HOFs like map, filter, and reduce provide a powerful way to abstract and handle data transformations in JavaScript through functional programming techniques.
+Writing polyfills reinforces understanding of native JavaScript methods and can enhance coding fluency and readiness for interviews【4:13†transcript.txt】【4:17†transcript.txt】.

@@ -1,0 +1,90 @@
+JavaScript Fundamentals Revision Notes
+Introduction to JavaScript
+JavaScript is a versatile programming language primarily used to add interactivity to websites. It allows developers to create dynamic content that can change, interact, and respond to user actions. JavaScript was introduced to make web pages more engaging compared to their previous static form.
+
+JavaScript vs. Java
+JavaScript and Java are distinct programming languages and they are not related, despite similarities in their names. JavaScript was developed by Brendan Eich in a remarkably short period of 10 days. Its purpose was to make web pages interactive, which was an innovation from the static nature of early web pages .
+
+Installing Node.js
+Node.js is an open-source JavaScript runtime that enables JavaScript to be run outside a browser. This allows JavaScript to be used for server-side development, along with multiple other applications like mobile and desktop application development .
+
+Key Steps to Install Node.js:
+Download Node.js from the official site and preferably choose the LTS (Long-Term Support) version.
+Verify installation by checking the version using the command node --version.
+Variables in JavaScript
+JavaScript variables are containers for storing data values. They are defined using the keywords var, let, and const, each with its specific rules regarding re-declaration and re-initialization.
+
+Var, Let, and Const:
+Var: Allows re-declaration and re-initialization.
+
+var a = 10;
+var a = 20; // Re-declaration
+a = 30;     // Re-initialization
+Let: Allows re-initialization but not re-declaration.
+
+let b = 10;
+b = 20;     // Re-initialization
+// let b = 30; // This would throw an error
+Const: Does not allow re-declaration or re-initialization and must be initialized during declaration.
+
+const c = 10;
+// c = 20; // This would throw an error
+The use of let and const is recommended over var because they restrict re-declaration, reducing potential bugs【8:0†transcript.txt】 .
+
+Data Types in JavaScript
+JavaScript categorizes its data types into two main categories: Primitive and Non-Primitive.
+
+Primitive Data Types:
+String: Represents textual data.
+
+let str = "JavaScript";
+Number: Integrates numbers without differentiation between integers and floats.
+
+let num = 100;
+Boolean: Holds a logical entity having two possible values: true or false.
+
+Undefined: A variable that has been declared but not assigned a value yet.
+
+Null: Represents the intentional absence of any object value.
+
+Non-Primitive Data Types:
+Object: Collections of key-value pairs.
+
+let person = { name: "John", age: 30 };
+Array: A special type of object used for storing sequences of values.
+
+let colors = ["red", "blue", "green"];
+Function: Block of code designed to perform a particular task.
+
+Primitive types are immutable and stored directly by value, and non-primitive types are stored as references .
+
+Functions in JavaScript
+Functions are blocks of code designed to perform specific tasks, which can be executed by calling their name. They can accept parameters and return a value.
+
+Basic function syntax:
+
+function greet(name) {
+  return `Hello, ${name}`;
+}
+With the introduction of ES6, the arrow function syntax was also introduced:
+
+const greet = (name) => `Hello, ${name}`;
+Objects and Arrays
+Objects:
+Objects in JavaScript are collections of properties where data is stored in key-value pairs. Objects can include arrays, functions, and other objects as their properties.
+
+Arrays:
+Arrays are special objects which use numbered indices to store multiple data items of the same type.
+
+Operations on Arrays:
+Push: Adds an element at the end.
+Pop: Removes the last element.
+Length: Returns the number of elements.
+Arrays and their operations enable efficient data handling, similar to stacks with push and pop operations .
+
+Best Practices
+Prefer using let and const over var to prevent re-declaration issues.
+Use const for values that should not change.
+Initialize variables at the top of their scope.
+Utilize the latest ES6+ syntax for cleaner and more efficient code.
+This summary provides a concise overview of fundamental JavaScript concepts discussed, aimed to assist in quick revision and understanding of JavaScript basics and best practices.

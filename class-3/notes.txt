@@ -1,0 +1,64 @@
+# Revision Notes: Lexical Scopes, Scope Chaining, and Closures
+
+## Introduction
+
+In this session, we delved into crucial JavaScript concepts including Lexical Scope, Scope Chaining, and Closures. Understanding these concepts is essential for mastering JavaScript's function behavior, especially in contexts involving nested functions and variable accessibility.
+
+## Execution Context and Variable Scope
+
+### Differences Between `var`, `let`, and `const`
+
+1. **`var`**:
+   - Function Scoped: Variables declared with `var` are limited to the function in which they're declared.
+   - Redeclaration and re-initialization are possible.
+
+2. **`let`**:
+   - Block Scoped: Variables declared with `let` are limited to the block (delimited by `{}`) where they are declared.
+   - Redeclaration is not possible, but re-initialization is allowed within the block it was defined.
+
+3. **`const`**:
+   - Also Block Scoped: Like `let`, but it does not allow re-initialization.
+   - Both redeclaration and re-initialization are not possible.
+
+### Execution Context
+
+- It's essential to understand how JavaScript creates execution contexts during the function invocation to effectively use lexical scoping and closures. An execution context contains the environment in which the current code is being executed. This involves both the local scope and the outer scope (parent scopes) which are referred to when looking up variables【4:6†transcript.txt】.
+
+## Lexical Scope and Scope Chaining
+
+### Lexical Scope
+
+- **Definition**: Lexical scope refers to the scope of a variable as defined by its physical placement in the written code, which JavaScript uses to determine the accessibility of variables.
+- **Example**: A child function can access variables from its parent function's scope. If a variable is not present within its local scope, it looks outward, going through its parent scopes up to the global scope【4:16†transcript.txt】.
+
+### Scope Chaining
+
+- Scope chaining occurs when a function is searching for a variable within its lexical environment. If it doesn’t find the variable, JavaScript moves upward from the child scope towards the parent scopes to find where the function is defined【4:10†transcript.txt】.
+
+## Closures
+
+### Definition of Closure
+
+- A closure is a feature where an inner function has access to its outer/enclosing function’s variables. This capability persists even after the outer function has finished execution【4:3†transcript.txt】.
+
+### Behavior of Closures
+
+- **Function returning function**: If you have a function that returns another function, the returned function retains access to the outer function’s variables—demonstrating closure. For example:
+
+  ```javascript
+  function parent() {
+      var a = 10;
+      function child() {
+          console.log(a);
+      }
+      return child;
+  }
+Here, child is returned and retains access to a from parent, showing closure【4:12†typed.md】.
+
+Use Cases: Closures can be extremely useful in data encapsulation and creating function factories.
+Closure with Multiple Nested Functions
+When multiple levels of function nesting are involved, closures maintain a reference to all parent scopes the function is lexically bound to, enabling access to higher parent scope variables【4:18†transcript.txt】.
+Practical Usage
+Debuggers and toolkits in browsers can show closures and lexical scope in action through breakpoints and scope visualization tools【4:19†transcript.txt】.
+Conclusion
+Understanding how closures and scoping work in JavaScript is pivotal to avoiding common pitfalls in programming, such as unexpected variable access issues. Mastering lexical scoping and closures will allow developers to write more predictable and modular code.

@@ -1,0 +1,65 @@
+Comprehensive Revision Notes for JavaScript Class
+Table of Contents
+Functions in JavaScript
+Execution Context
+First-Class Functions
+Hoisting
+Temporal Dead Zone
+1. Functions in JavaScript
+Definition: A function is a block of code designed to perform a particular task. Functions are defined once and can be executed, or called, multiple times.
+
+Ways to Define Functions:
+
+Function Declaration: This is the most common way and involves using the function keyword.
+function add(a, b) {
+    return a + b;
+}
+Function Expression: Functions can also be stored in variables, known as anonymous functions when no name is provided.
+const sum = function(a, b) {
+    return a + b;
+};
+Arrow Functions: Introduced in ES6, they offer a more concise syntax.
+const subtract = (a, b) => a - b;
+Examples of Functions:
+
+Standard function
+function serveBeverage(quantity, drink) {
+    console.log(`I want ${quantity} ${drink}(s).`);
+}
+serveBeverage(2, "coffee");
+Fat Arrow Function
+const serveBeverage = (quantity, drink) => console.log(`I want ${quantity} ${drink}(s).`);
+serveBeverage(2, "coffee");
+2. Execution Context
+Definition: The execution context is the environment where JavaScript code is executed. This environment is crucial for executing functions and includes two stages:
+
+Memory Creation: Variables and functions are stored in memory. Variables are initially undefined until the code runs through.
+Execution Stage: The code is executed line-by-line【4:13†source】.
+Global and Local Execution Contexts:
+
+Global Context: Created when the script is run, encompassing the entire script.
+Function Context: Created whenever a function is invoked. Each function call creates a new execution context.
+Local Execution Context: When particular functions execute, temporary environments are created called local execution contexts【4:13†source】.
+3. First-Class Functions
+JavaScript treats functions as first-class citizens:
+
+Functions can be stored in variables, passed as arguments, or returned from other functions【4:17†source】.
+4. Hoisting
+Definition: Hoisting is JavaScript’s default behavior of moving declarations to the top of their containing scope during the compile phase before the code execution begins【4:17†source】.
+
+Examples:
+
+Variables declared using var have their declaration hoisted, but not their initialization.
+console.log(a); // undefined
+var a = 3;
+Function declarations are hoisted completely, meaning they can be called before they are defined【4:19†source】.
+Limitations with let and const: They do get hoisted but are not initialized, leading to a "Temporal Dead Zone" error if accessed before initialization【4:10†source】.
+
+5. Temporal Dead Zone (TDZ)
+Definition: The temporal dead zone is the term to describe the state where variables are declared with let or const but not yet initialized. Accessing them in this state throws a reference error【4:10†source】.
+
+Example:
+
+console.log(a); // ReferenceError: Cannot access 'a' before initialization
+let a = 3;
+TDZ is specific to let and const, not applicable for var, which defaults to undefined if hoisted【4:10†source】.

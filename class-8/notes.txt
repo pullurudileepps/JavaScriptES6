@@ -1,0 +1,45 @@
+Comprehensive Notes on DOM Manipulation in JavaScript
+Introduction to DOM
+DOM stands for Document Object Model. It represents a programming interface for web documents. The DOM represents the structure of a document as a tree, with the HTML document as the root, elements as nodes, and text as the leaf nodes【7:1†transcript】. The DOM allows programs to change the document's structure, style, and content dynamically【7:1†transcript】.
+
+Importance of DOM:
+Structure Representation: Provides a structured representation of the document【7:16†transcript】.
+JavaScript Manipulation: Allows access and manipulation of document content using JavaScript【7:16†transcript】.
+Interactivity: Enables the creation of interactive web applications【7:16†transcript】.
+Working with DOM
+Selecting Elements:
+Single Element Selection: Using document.querySelector() to target elements with CSS selectors【7:16†transcript】.
+Multiple Elements Selection: Using document.querySelectorAll() or document.getElementsByClassName() to select multiple elements【7:14†transcript】【7:16†transcript】.
+Manipulating Elements:
+Creating Elements: document.createElement('element') creates new elements【7:6†transcript】.
+Appending Elements: parent.appendChild(newElement) adds new elements as children【7:6†transcript】.
+Inserting Before: parent.insertBefore(newElement, referenceElement) inserts before a specific element【7:6†transcript】.
+Setting Attributes: element.setAttribute('attribute', 'value') to set or update attributes【7:2†transcript】.
+Getting Attributes: element.getAttribute('attribute') retrieves the value of an attribute【7:8†transcript】.
+Modifying Element Content: Using element.innerHTML or element.innerText to change the element's content【7:17†transcript】.
+Event Listeners:
+Event Handling: Attach events using element.addEventListener('event', callbackFunction). Common events include click, dblclick, mouseover, etc.【7:12†transcript】【7:5†transcript】.
+Example Discussion
+Problem: Write a script that fetches the data-color attribute of a card on double-click and attaches the fetched class to the card, changing the data-color attribute to "used"【7:14†transcript】 .
+
+<body>
+    <div class="card" data-color="blue"></div>  
+    <div class="card" data-color="red"></div>
+    ...
+</body>
+<script>
+    let cardsNodeList = document.querySelectorAll('.card');
+    cardsNodeList.forEach(card => {
+        card.addEventListener('dblclick', function(event) {
+            let colorClass = event.currentTarget.getAttribute('data-color');
+            event.currentTarget.classList.add(colorClass);
+            event.currentTarget.setAttribute('data-color', 'used');
+        });
+    });
+</script>
+Explanation:
+We select all cards with document.querySelectorAll('.card').
+Add a dblclick event listener to each card.
+On dblclick, we retrieve the data-color attribute using getAttribute.
+We update the class of the card using classList.add.
+Finally, we set the data-color attribute to "used" using setAttribute.

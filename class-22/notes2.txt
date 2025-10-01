@@ -1,0 +1,68 @@
+Revision Notes for Software Engineering Class
+Agenda of the Class
+The class primarily focused on two significant JavaScript concepts—Event Delegation and creating Nested Comments. These topics are crucial for efficiently managing DOM interactions and implementing complex features in web applications.
+
+Key Concepts Covered
+1. Event Delegation
+Event delegation is a powerful JavaScript pattern that optimizes handling events, particularly in scenarios involving dynamically created elements. It's based on two key ideas:
+
+Event Bubbling: When an event occurs on a target element, it bubbles up to its parent elements. This behavior allows you to attach a single event listener to a parent element to manage all events that bubble up from its children.
+
+Performance Optimization: By setting an event listener on a common ancestor rather than individual elements, you reduce the overhead associated with attaching multiple listeners.
+
+Use Case Example
+Consider a product listing page where each product has an "Add to Cart" button. Instead of setting click event listeners on each button, attach a single listener to the list's container. When a button is clicked, the listener identifies the target and processes the event accordingly【4:12†transcript.txt】【4:2†transcript.txt】.
+
+Code Implementation:
+
+const categoriesContainer = document.getElementById("categories");
+
+categoriesContainer.addEventListener("click", (event) => {
+  const clickedElement = event.target;
+
+  if (clickedElement.classList.contains("product")) {
+    const category = clickedElement.closest(".category").querySelector("h2").textContent;
+    console.log(`Clicked on ${clickedElement.textContent} in the ${category} category.`);
+  }
+});
+2. Nested Comments
+Nested comments are comments within comments, often seen in forums or discussion threads in platforms like Reddit or initial versions of Facebook.
+
+Building a Nested Comment System
+Structure: Use a combination of div, span, textarea, and buttons within containers to format how comments and replies appear.
+Dynamism through CreateElement: Create a utility function to generate HTML elements dynamically, streamlining how new elements like comments are added.
+Steps:
+
+Create Function: Develop a utility function, createElement, that simplifies the creation and appending of HTML elements to the DOM.
+
+Append Mechanism: Use the appendChild method to nest comments under parent comments, allowing a hierarchy to be visible【4:1†transcript.txt】【4:13†transcript.txt】.
+
+Event Listeners: Implement click events for actions like "post comment" or "reply" using event delegation for efficient handling【4:11†transcript.txt】.
+
+Code Implementation:
+
+function createCommentElement(name, text) {
+  const commentElement = document.createElement('div');
+  commentElement.className = 'comment';
+
+  const nameElement = document.createElement('p');
+  nameElement.textContent = name;
+  commentElement.appendChild(nameElement);
+
+  const textElement = document.createElement('p');
+  textElement.textContent = text;
+  commentElement.appendChild(textElement);
+
+  const replyButton = document.createElement('button');
+  replyButton.textContent = 'Reply';
+  commentElement.appendChild(replyButton);
+
+  return commentElement;
+}
+
+function addNestedComment(name, text, parentElement) {
+  const newComment = createCommentElement(name, text);
+  parentElement.appendChild(newComment);
+}
+3. Event-Driven UI Interactivity
+Adding UI elements on-the-fly using JavaScript, enhancing user experiences by dynamically updating content and structures in response to user actions【4:6†transcript.txt】.

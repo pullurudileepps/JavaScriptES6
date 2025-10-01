@@ -1,0 +1,54 @@
+Comprehensive Class Revision Notes: Software Engineering Concepts
+Introduction
+In this learning session, we covered a variety of software engineering and programming concepts, focusing on higher-order functions, functional programming, and practical implementations using JavaScript. Here is a detailed breakdown of each concept discussed.
+
+Key Concepts Discussed
+1. Higher-Order Functions
+A higher-order function is a function that can take one or more functions as arguments or return a function as its result. They are fundamental to functional programming【4:0†typed.md】 .
+2. Functional Programming
+Functional Programming Paradigm: Encourages writing code with pure functions without side effects. This paradigm supports first-class and higher-order functions【4:10†typed.md】.
+3. Pure and Impure Functions
+Pure Functions: Always return the same result given the same arguments and have no side effects. Example: sum(a, b) { return a + b; }【4:10†typed.md】【4:18†typed.md】.
+Impure Functions: These functions can have side effects and may not return the same output for the same input due to external factors like global variables【4:10†typed.md】【4:18†typed.md】.
+4. Code Structure and the DRY Principle
+The DRY (Don't Repeat Yourself) principle was emphasized by demonstrating how to refactor code to remove repetition using functions【4:9†typed.md】.
+5. Array Methodologies: Map, Filter, and Reduce
+a. Map
+The map method is used to transform arrays by applying a function to each element, producing a new array without modifying the original array【4:1†transcript.txt】【4:6†typed.md】.
+Example using map to calculate areas:
+let radiusArr = [1, 2, 3, 4];
+let areaArr = radiusArr.map(function(num){
+    return Math.PI * num * num;
+});
+console.log(areaArr);
+b. Filter
+Filter method creates a new array with all elements that pass the test implemented by the provided function. It's useful for performing tasks like filtering positive numbers from an array【4:13†typed.md】【4:19†transcript.txt】.
+c. Reduce
+The reduce method applies a function against an accumulator and each element in the array to reduce it to a single value. This is useful for aggregating values like sums【4:12†transcript.txt】【4:13†typed.md】.
+Example Problem and Solution
+Coding Task: Calculate Circle Metrics Given an Array of Radii
+
+Create functions to calculate the area, circumference, and diameter for each radius in an array【4:0†typed.md】 .
+Implementation Example
+let myRadiusArray = [2, 3, 4, 5, 8];
+
+function calculateArea(radiusArr){
+    return radiusArr.map(r => Math.PI * r * r);
+}
+
+function calculateCircumference(radiusArr){
+    return radiusArr.map(r => 2 * Math.PI * r);
+}
+
+function calculateDiameter(radiusArr){
+    return radiusArr.map(r => r * 2);
+}
+
+const areas = calculateArea(myRadiusArray);
+console.log('Areas:', areas);
+
+const circumferences = calculateCircumference(myRadiusArray);
+console.log('Circumferences:', circumferences);
+
+const diameters = calculateDiameter(myRadiusArray);
+console.log('Diameters:', diameters);

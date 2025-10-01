@@ -1,0 +1,29 @@
+Revision Notes: JavaScript Concepts - Async, Defer, Debouncing, and Throttling
+These notes cover important JavaScript techniques discussed in the class, focusing on async and defer attributes in scripts, as well as debouncing and throttling methodologies for optimizing event handling.
+
+JavaScript Script Loading: Async and Defer
+Understanding Script Loading
+When you include JavaScript in your HTML using the <script> tag, two main processes occur:
+
+Script Downloading: The script file is fetched from its source.
+Script Execution: Once downloaded, the JavaScript code is executed.
+Problem with Default <script> Tag
+Blocking Behavior: By default, when the browser encounters a <script> tag, it halts HTML parsing to download and execute the script. This can lead to jittery or laggy page loads as the browser waits for scripts to be processed before continuing with HTML parsing【4:18†transcript.txt】.
+Attributes: async and defer
+Async: Script downloading occurs in the background and execution starts as soon as possible once downloading is complete. This may still pause HTML parsing briefly during execution.
+
+Use async when scripts are independent, meaning they do not rely on other scripts or need to be executed in a specific order【4:18†transcript.txt】【4:9†transcript.txt】.
+Defer: Scripts are also downloaded in the background, but execution is deferred until after the HTML parsing is complete. This is beneficial for scripts dependent on a full parsed DOM【4:9†transcript.txt】【4:18†transcript.txt】.
+
+Practical Usage
+Put the script tag at the end of the HTML body, use async for scripts that need to be loaded quickly and independently, or use defer for scripts dependent on the entire DOM being ready【4:11†transcript.txt】【4:9†transcript.txt】.
+Optimizing Event Handling: Debouncing and Throttling
+Challenges in Event Handling
+JavaScript often needs efficient handling of rapid sequence events like scroll, resize, or typing, which can overwhelm browsers and make applications sluggish.
+
+Debouncing
+Concept: Debouncing groups multiple sequential calls into a single call, adding a delay between the last user action and execution.
+Implementation: Set a wait time (delay) after an event and only execute the function if no new events are triggered during this period. This is useful for reducing API calls made during typing or form submissions【4:10†transcript.txt】【4:7†transcript.txt】.
+Throttling
+Concept: Throttling limits the number of times a function can be executed over a period. It ensures a constant call rate for a function.
+Implementation: Triggers a function at regular intervals, regardless of how many times the event occurs in that interval. Ideal for functions like updating a search result during continuous typing【4:15†transcript.txt】【4:13†transcript.txt】.

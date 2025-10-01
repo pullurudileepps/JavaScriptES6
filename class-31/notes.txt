@@ -1,0 +1,31 @@
+JavaScript Data Types, Copies, and Truthy/Falsy Values
+JavaScript Data Types
+In JavaScript, data types can be classified into two main categories: primitive data types and reference data types. Understanding these helps in knowing how data is stored and managed in the memory.
+
+Primitive Data Types
+Primitive data types are simple and are considered the most basic level of data implementation. Examples include:
+
+Number
+String
+Boolean
+Null
+Undefined
+Primitive data types are stored on the stack, a simple data structure that allows for quick data storage and retrieval. A crucial aspect of primitives is that each variable gets its own space in memory. Changing the value of one variable does not affect another, even if they originally had the same value. This can be compared to two students taking a test independently — if one changes their answers, the other remains unaffected【4:1†source】【4:2†source】.
+
+Reference Data Types
+These data types include arrays, functions, collections, and any other kinds of objects. Unlike primitive data types, reference types are dynamic — they do not have a fixed size. In JavaScript, the actual data is stored in the heap, whereas the stack maintains a pointer to the location of this data in the heap. Thus, changing an object property through one reference variable affects all references pointing to it, unlike in primitive types【4:15†source】.
+
+Shallow vs. Deep Copy
+Copying objects in JavaScript can be done in various ways, primarily categorized into shallow and deep copies.
+
+Shallow Copy
+A shallow copy of an object is a bit-by-bit copy of the object's memory. When creating a shallow copy, any changes to the nested objects affect the original object, because the references to nested objects inside the copy point to the same memory as the original【4:16†source】.
+
+Deep Copy
+A deep copy involves creating a completely independent copy of an object, including all nested objects. This ensures changes to the nested data structures of the copy do not affect the original. One common way to achieve a deep copy in JavaScript is using JSON.stringify to convert an object into a string and JSON.parse to turn it back into a new object. However, this method has limitations as it does not handle functions, undefined, or other non-serializable entities【4:6†source】【4:13†source】.
+
+Immutability in JavaScript
+Immutability is the concept where data, once created, should not change. Instead, any modification results in a new object, preserving the original. This practice ensures a stable state of data, promoting easier debugging and predictable outcomes in applications【4:10†source】.
+
+Truthy and Falsy Values
+JavaScript evaluates expressions in Boolean contexts using truthy and falsy values. Truthy values are those which, when evaluated, resolve to true. These include most standard objects, non-zero numbers, and other data types not considered nothingness. Conversely, falsy values evaluate to false and include false, 0, -0, "" (empty string), null, undefined, and NaN.

@@ -1,0 +1,93 @@
+Revision Notes for Class on Implementing Features
+Welcome to the comprehensive revision notes for implementing features in a task management web application. In this class, we covered several critical aspects: implementing features such as locking/unlocking tasks, changing the color of tasks, and deleting tasks. Let's detail each of these features using the concepts and code snippets discussed in the class.
+
+1. Features Overview
+We focused on three primary features:
+
+Lock and Unlock: Allow users to toggle between editing a task and viewing it in a locked state.
+Color Change: Facilitate changing the color of a task to signify different statuses.
+Delete: Enable the functionality to remove tasks from the list.
+General Structure
+Each feature is implemented using event listeners attached to elements within the HTML structure representing tasks. These elements dynamically interact with JavaScript functions to manipulate the task attributes and store updates in local storage for persistence.
+
+2. Lock and Unlock Feature
+Purpose
+The lock and unlock feature allows tasks to be edited when in the "unlocked" state. Conversely, tasks are stored in a non-editable state when "locked".
+
+Implementation
+Event Listener: An event listener is attached to each task's lock icon.
+Editable Content: Using the contenteditable attribute, we toggle the ability to edit the task's content.
+function handleLock(ticket, id) {
+  let ticketLockIcon = ticket.querySelector('.ticket-lock').children[0];
+  let ticketTaskArea = ticket.querySelector('.task-area');
+
+  ticketLockIcon.addEventListener('click', function() {
+    let ticketIdx = getTicketIdx(id);
+    if (ticketLockIcon.classList.contains('lockClass')) {
+      ticketLockIcon.classList.remove('lockClass');
+      ticketLockIcon.classList.add('unlockClass');
+      ticketTaskArea.setAttribute('contenteditable', 'true');
+    } else {
+      ticketLockIcon.classList.remove('unlockClass');
+      ticketLockIcon.classList.add('lockClass');
+      ticketTaskArea.setAttribute('contenteditable', 'false');
+    }
+    ticketsArray[ticketIdx].ticketTask = ticketTaskArea.innerText; // update task
+    localStorage.setItem('tickets', JSON.stringify(ticketsArray));
+  });
+}
+Discussion
+This feature uses classes to apply styles and manage states between locked and unlocked using the FontAwesome library for visual indicators【4:0†transcript.txt】.
+
+3. Color Change Feature
+Purpose
+This feature helps track task progress by changing its color. The color serves as a visual cue for different statuses.
+
+Implementation
+Color Array: Define a sequence of colors the task can toggle through.
+Event Listener: An event listener detects clicks on the task's color band, cycling through colors.
+function handleColor(ticket, id) {
+  let ticketColorBand = ticket.querySelector('.ticket-color');
+  ticketColorBand.addEventListener('click', function() {
+    let ticketIdx = getTicketIdx(id);
+    let currentColor = ticketColorBand.classList[1];
+    let currentColorIdx = colors.findIndex(color => currentColor === color);
+    currentColorIdx++;
+    let newTicketColorIdx = currentColorIdx % colors.length;
+    let newTicketColor = colors[newTicketColorIdx];
+
+    ticketColorBand.classList.remove(currentColor);
+    ticketColorBand.classList.add(newTicketColor);
+
+    ticketsArray[ticketIdx].ticketColor = newTicketColor;
+    localStorage.setItem('tickets', JSON.stringify(ticketsArray));
+  });
+}
+Discussion
+This feature demonstrates a round-robin selection using modulus arithmetic on an index【4:10†transcript.txt】.
+
+4. Delete Feature
+Purpose
+The delete feature facilitates removing a task from the interface and its stored list.
+
+Implementation
+Toggle Delete Mode: A flag toggles the state of the application between normal and delete mode.
+Deletion Logic: If delete mode is active and a task is clicked, it is removed from both the DOM and the local storage array.
+function handleRemoval(ticket, id) {
+  ticket.addEventListener('click', function() {
+    if (!removeTaskFlag) return;
+    let idx = getTicketIdx(id);
+    ticket.remove(); // Remove from UI
+    ticketsArray.splice(idx, 1); // Remove from array
+    localStorage.setItem('tickets', JSON.stringify(ticketsArray));
+  });
+}
+Discussion
+The delete feature handles UI updates and ensures data consistency within localStorage【4:12†transcript.txt】.
+
+5. Event Handling and Logic
+Events and Flags
+Each feature relies on event listeners to detect user interactions and flags to manage different operational modes (like delete mode)【4:19†typed.md】.
+
+Local Storage
+Persistence is critical, so tasks are saved to localStorage, enabling state recovery upon reloading the webpage【4:8†typed.md】.
